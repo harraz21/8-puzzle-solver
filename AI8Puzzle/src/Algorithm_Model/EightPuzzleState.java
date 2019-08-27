@@ -6,43 +6,38 @@
 package Algorithm_Model;
 
 /**
- *
  * @author Aghapy
  */
 public class EightPuzzleState {
     private int manDist = 0;
- final int[] GOAL = new int[]
+    final int[] GOAL = new int[]
             {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
-      int[] curBoard;
-            // linearly search the array independent of the nested for's below
+    int[] curBoard;
+    // linearly search the array independent of the nested for's below
 
-         private int outOfPlace = 0;
+    private int outOfPlace = 0;
 
-       public EightPuzzleState(int[] board) {
-           //System.out.println("here is");
-           //System.out.println(board);
-           curBoard = board;
-           setOutOfPlace();
-           setManDist();
-        }
-
-
+    public EightPuzzleState(int[] board) {
+        //System.out.println("here is");
+        //System.out.println(board);
+        curBoard = board;
+        setOutOfPlace();
+        setManDist();
+    }
 
 
-
-
-        private void setOutOfPlace() {
+    private void setOutOfPlace() {
         for (int i = 0; i < curBoard.length; i++) {
             if (curBoard[i] != GOAL[i]) {
                 outOfPlace++;
             }
         }
     }
-     
+
     private void setManDist() {
-            int index = -1;
-  for (int y = 0; y < 3; y++) {
+        int index = -1;
+        for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 3; x++) {
                 index++;
 
@@ -69,17 +64,17 @@ public class EightPuzzleState {
             }
         }
     }
-     private int[] copyBoard(int[] state) {
+
+    private int[] copyBoard(int[] state) {
         int[] ret = new int[9];
         for (int i = 0; i < 9; i++) {
             ret[i] = state[i];
         }
         return ret;
     }
-    
-     
-    
-    }
+
+
+}
     
     
     

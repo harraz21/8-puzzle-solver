@@ -24,7 +24,7 @@ public class A_Star implements Algorithm {
 
     @Override
     public ArrayList<Node> search(int[] board, Node parent) {
-        initialState =  new GreedyNode(board, null);
+        initialState = new GreedyNode(board, null);
         frontier = new PriorityQueue<>();
         frontierList = new ArrayList<>();
         frontier.add(initialState);
@@ -35,8 +35,8 @@ public class A_Star implements Algorithm {
             frontierList.remove(state);
             explored.add(state);
 
-            if (java.util.Arrays.equals(state.state,new int[]{0,1,2,3,4,5,6,7,8})) {
-                pathCost=state.getCost();
+            if (java.util.Arrays.equals(state.state, new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8})) {
+                pathCost = state.getCost();
                 return pathToGoal(state);
             }
             state.generateChildren();
@@ -68,21 +68,18 @@ public class A_Star implements Algorithm {
         return null;
     }
 
-    @Override
-    public int getExploredNoOfNodes(Stack<Node> solutionPath) {
-        return explored.size();
-    }
+
 
     @Override
     public int getMaxDepth(Stack<Node> solutionPath, int[] goal) {
-        int maxDepth=0;
-        for (GreedyNode node:frontierList) {
-            if (node.getCost()>maxDepth)
-                maxDepth=node.getCost();
+        int maxDepth = 0;
+        for (GreedyNode node : frontierList) {
+            if (node.getCost() > maxDepth)
+                maxDepth = node.getCost();
         }
-        for (GreedyNode node:explored) {
-            if (node.getCost()>maxDepth)
-                maxDepth=node.getCost();
+        for (GreedyNode node : explored) {
+            if (node.getCost() > maxDepth)
+                maxDepth = node.getCost();
         }
         return maxDepth;
     }
@@ -95,6 +92,7 @@ public class A_Star implements Algorithm {
         }
         return false;
     }
+
     private boolean containedInExplored(GreedyNode node) {
         for (GreedyNode test : explored) {
             if (java.util.Arrays.equals(test.state, node.state)) {
@@ -106,16 +104,15 @@ public class A_Star implements Algorithm {
 
     private ArrayList<Node> pathToGoal(GreedyNode state) {
         Stack<Node> pathToGoal = new Stack<>();
-        path =new ArrayList<>();
-        Node node=state;
+        path = new ArrayList<>();
+        Node node = state;
         pathToGoal.push(state);
-        while (node.getParent()!=null)
-        {
+        while (node.getParent() != null) {
             pathToGoal.push(node.getParent());
-            node=node.getParent();
+            node = node.getParent();
         }
         int size = pathToGoal.size();
-        for (int i = size ; i > 0 ; i--) {
+        for (int i = size; i > 0; i--) {
             path.add(pathToGoal.pop());
         }
         return path;
@@ -128,25 +125,15 @@ public class A_Star implements Algorithm {
     public ArrayList<GreedyNode> getExploredgreedy() {
         return explored;
     }
+
     @Override
-    public ArrayList<Node> getExplored(){
+    public ArrayList<Node> getExplored() {
         ArrayList<Node> x = new ArrayList<Node>();
-        for (GreedyNode i:
+        for (GreedyNode i :
                 explored) {
             x.add(i);
         }
         return x;
-    }
-    public void setExplored(ArrayList<GreedyNode> explored) {
-        this.explored = explored;
-    }
-
-    public ArrayList<Node> getPath() {
-        return path;
-    }
-
-    public void setPath(ArrayList<Node> path) {
-        this.path = path;
     }
 
 
@@ -157,15 +144,15 @@ public class A_Star implements Algorithm {
 
     @Override
     public int getSearchDepth() {
-        int  searchDepth = 0;
+        int searchDepth = 0;
 
-        for (GreedyNode node:frontierList) {
-            if (node.getDepth()>searchDepth)
-                searchDepth=node.getDepth();
+        for (GreedyNode node : frontierList) {
+            if (node.getDepth() > searchDepth)
+                searchDepth = node.getDepth();
         }
-        for (GreedyNode node:explored) {
-            if (node.getDepth()>searchDepth)
-                searchDepth=node.getDepth();
+        for (GreedyNode node : explored) {
+            if (node.getDepth() > searchDepth)
+                searchDepth = node.getDepth();
         }
         return searchDepth;
     }
@@ -175,7 +162,5 @@ public class A_Star implements Algorithm {
         return heuristicType;
     }
 
-    public void setHeuristicType(Heuristic heuristicType) {
-        this.heuristicType = heuristicType;
-    }
+
 }

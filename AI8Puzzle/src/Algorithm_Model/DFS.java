@@ -7,18 +7,19 @@ package Algorithm_Model;/*
 import java.util.*;
 
 /**
- *
  * @author Aghapy
  */
-public class DFS implements Algorithm{
+public class DFS implements Algorithm {
     ArrayList<Node> frontierList;
     int searchDepth = 0;
+
     @Override
-    public ArrayList<Node> getExplored(){
+    public ArrayList<Node> getExplored() {
         return frontierList;
     }
+
     @Override
-    public ArrayList<Node> search(int [] board, Node parent ) {
+    public ArrayList<Node> search(int[] board, Node parent) {
         Stack<Node> stack = new Stack<Node>();
         Node root = new Node(board, null);
         stack.push(root);
@@ -28,27 +29,11 @@ public class DFS implements Algorithm{
         return performSearch(stack);
     }
 
-    @Override
-    public int getExploredNoOfNodes(Stack<Node> solutionPath) {
-        //number of nodes
-        Stack<Node> s = solutionPath;
-        int pathLength =0;
-        //getPath solution paths and Stack S :"D
-
-        while(s.isEmpty() == false){
-            System.out.println(s.pop());
-            pathLength ++;
-        }
-        System.out.println("paths lengths"+ pathLength);
-        return pathLength;
-    }
-
-
 
     @Override
-    public int getMaxDepth(Stack<Node> solutionPath , int [] goal) {
-        int maxDepth=0;
-        for (int i = 0; i <solutionPath.size(); i++) {
+    public int getMaxDepth(Stack<Node> solutionPath, int[] goal) {
+        int maxDepth = 0;
+        for (int i = 0; i < solutionPath.size(); i++) {
 
 
             Node popedChild = solutionPath.pop();
@@ -124,7 +109,7 @@ public class DFS implements Algorithm{
                     if (Children.get(i) == null)
                         continue;
                     boolean duplicate = false;
-                    for (Node j:
+                    for (Node j :
                             frontierList) {
 
                         if (Arrays.toString(j.getState()).equalsIgnoreCase(Arrays.toString(Children.get(i).getState())))
@@ -134,14 +119,14 @@ public class DFS implements Algorithm{
                     }
                     if (duplicate == true)
                         continue;
-                    int [] qq = Children.get(i).getState();
+                    int[] qq = Children.get(i).getState();
 
                     // second parameter here adds the cost of the new node to
                     // the current cost total in the SearchNode
                     //   System.out.println("Not Null at "+i);
                     Node newNode = Children.get(i);
                     q.push(newNode);
-                    if (newNode.getDepth() > searchDepth){
+                    if (newNode.getDepth() > searchDepth) {
                         searchDepth = newNode.getDepth();
                     }
 //                        System.out.println(newNode.getState()[0]+" "+newNode.getState()[1]+" "+newNode.getState()[2]+"\n"+
@@ -175,8 +160,8 @@ public class DFS implements Algorithm{
 
                 int[] arr = new int[]
                         {0, 1, 2, 3, 4, 5, 6, 7, 8};
-                int found= searchCount-1;
-                System.out.println("Search path count " +found);
+                int found = searchCount - 1;
+                System.out.println("Search path count " + found);
                 System.out.println("sent list");
 
 

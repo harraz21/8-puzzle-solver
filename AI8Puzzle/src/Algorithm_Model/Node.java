@@ -10,6 +10,9 @@ import utility.Utility;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @author Harraz21
+ */
 
 
 public class Node {
@@ -17,26 +20,21 @@ public class Node {
     /**
      * (RIGHT = childre[0], LEFT = childre[1], UP = childre[2], DOWN =
      * childre[3]).
-     *
      */
     protected int[] state = new int[9];
     private ArrayList<Node> children;
     private Node parent;
     private int depth;
+
     public Node(int[] state, Node parent) {
-        if (parent == null){
+        if (parent == null) {
             depth = 0;
-        }else {
-            depth = parent.depth+1;
+        } else {
+            depth = parent.depth + 1;
         }
         this.state = state;
         this.parent = parent;
     }
-
-    Node(EightPuzzleState eightPuzzleState) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 
 
     public void generateChildren() {
@@ -114,10 +112,10 @@ public class Node {
                     }
                 }
             }
-        }else {
+        } else {
             for (Node newChild : newChildren) {
                 if (newChild != null) {
-                        children.set(newChildren.indexOf(newChild), newChild);
+                    children.set(newChildren.indexOf(newChild), newChild);
                 }
             }
         }
@@ -149,7 +147,6 @@ public class Node {
     }
 
 
-
     public int[] getState() {
         return state;
     }
@@ -163,26 +160,21 @@ public class Node {
         return children;
     }
 
-    public void setChildren(ArrayList<Node> children) {
-        this.children = children;
-    }
 
     public Node getParent() {
         return parent;
     }
 
-    public void setParent(Node parent) {
-        this.parent = parent;
-    }
 
     public int getDepth() {
         return depth;
     }
 
     boolean isGoal() {
-      EightPuzzleState n = new EightPuzzleState(state);
+        EightPuzzleState n = new EightPuzzleState(state);
 
-        return Arrays.equals(n.curBoard, n.GOAL);}
+        return Arrays.equals(n.curBoard, n.GOAL);
+    }
 
 
 }

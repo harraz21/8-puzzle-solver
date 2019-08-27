@@ -5,10 +5,15 @@ import java.util.Stack;
 
 public interface Algorithm {
 
-    public ArrayList<Node> search(int [] board, Node parent);
-    public int getExploredNoOfNodes(Stack<Node> solutionPath);
-    public int getMaxDepth(Stack<Node> solutionPath, int [] goal);
-    public int getCostPath();
-    public int getSearchDepth();
-    public ArrayList<Node> getExplored();
+    ArrayList<Node> search(int[] board, Node parent);
+
+
+
+    int getMaxDepth(Stack<Node> solutionPath, int[] goal);
+
+    int getCostPath();
+
+    int getSearchDepth();
+
+    ArrayList<Node> getExplored();
 }
