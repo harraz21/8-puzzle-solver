@@ -2,15 +2,3 @@
 ### Example user template template
 ### Example user template
 
-# IntelliJ project files
-.idea
-*.iml
-out
-gen
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/vcs.xml
-.idea/modules.xml
-.idea/workspace.xml
-AI8Puzzle/AI8Puzzle.iml
-.idea/
